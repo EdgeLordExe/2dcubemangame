@@ -54,3 +54,13 @@
 /client/verb/test()
 	set name = "Test"
 	experiment()
+
+var/global/l_hid = 0
+/client/verb/hide_ui()
+	set name = "Hide UI"
+	if (l_hid)
+		l_hid = 0
+		planes[/plane/lighting].color = "#FFFF"
+	else
+		l_hid = 1
+		planes[/plane/lighting].color = "#0000"

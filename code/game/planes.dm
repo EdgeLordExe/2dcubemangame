@@ -10,6 +10,7 @@
 	plane = WORLD_PLANE
 
 /plane/lighting
+	blend_mode = BLEND_MULTIPLY
 	plane = LIGHTING_PLANE
 
 /plane/ui

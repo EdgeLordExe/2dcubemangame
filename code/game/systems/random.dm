@@ -5,7 +5,7 @@ PROCESSING_CREATE(random)
 	var/update_ratio = 0.1
 
 /system/processing/random/process()
-	if (!processing.len)
+	if (processing.len < 1)
 		return
 	var/amount = processing.len * update_ratio
 	if (amount < 1)

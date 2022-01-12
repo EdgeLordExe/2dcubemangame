@@ -14,13 +14,13 @@
 
 /atom/destroy()
 	if (light)
-		sys_light.propagate_light(src, sys_light.ambient_light[min(sys_light.ambient_light.len, z)])
+		sys_light.remove_light(src, istype(src, /turf) ? src : loc)
 	. = ..()
 
 /atom/proc/update_light()
-	if (!light) // XXX: remove sys_light check once initialisation priority is fixed
+	if (!light)
 		return
-	sys_light.propagate_light(src, light)
+	sys_light.add_light(src)
 
 /atom/proc/update_appearance()
 	appearance_flags |= PIXEL_SCALE
@@ -39,7 +39,12 @@
 /atom/proc/projectile_impact(atom/movable/projectile/P)
 	take_damage(P.damage)
 
+/atom/proc/set_opacity(O)
+
+/atom/proc/set_density(D)
+
 /atom/movable
+	vis_flags = VIS_INHERIT_PLANE
 	var/say_verb = "states"
 
 /atom/movable/destroy()
